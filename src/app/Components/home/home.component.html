@@ -1,0 +1,51 @@
+<select (change)="toFilter()" [(ngModel)]="SelectedItem"
+    class="py-3 px-4 pe-9 block max-w-96 border-transparent rounded-lg text-sm  text-gray-50  disabled:pointer-events-none dark:bg-gray-700 m-5">
+    <option selected class="text-gray-50">Open this select menu</option>
+    <option *ngFor="let option of Category" [value]="option.ID" class="text-gray-50">{{option.Name}}</option>
+</select>
+
+
+
+<app-card (ChangePrice)="totalPrice($event)" [SelectedSelect]="SelectedItem"></app-card>
+
+<hr>
+<h4>This Is The Total Value Of Ur Order :{{Price}}</h4>
+
+<table class="table-fixed">
+    <thead>
+        <tr>
+
+            <th class="w-1/10 px-3 py-2">ProductID</th>
+            <th class="w-1/2 px-3 py-2">Product Name</th>
+            <th class="w-1/6 px-3 py-2">Product Price</th>
+            <th class="w-1/6 px-3 py-2">Product Quantity</th>
+            <th class="w-1/4 px-3 py-2">toDelete</th>
+    
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of toShow; track $index) {
+        <tr>
+
+            <td class="border px-3 py-2">{{item.ID}}</td>
+            <td class="border px-3 py-2">{{item.Name}}</td>
+            <td class="border px-3 py-2">{{item.Price}}</td>
+            <td class="border px-3 py-2">{{item.Quantity}}</td>
+            <td class="border px-3 py-2"><button appToChange
+                    class="bg-red-700 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full text-sm"
+                    (click)="toDelete(item.ID,item.Quantity)">
+                    To Delete
+                </button></td>
+       
+        </tr>
+                }
+      
+      <button appToChange (click)="toCheckOut()"
+                class="bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm">
+                Check Out
+            </button>
+
+    </tbody>
+</table>
+
+<app-natunality-input></app-natunality-input>

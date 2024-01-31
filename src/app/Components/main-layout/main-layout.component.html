@@ -1,0 +1,18 @@
+<div class="grid grid-cols-12">
+    <app-navbar class="col-span-12"></app-navbar>
+
+    <div class="col-span-2">
+        <app-aside class=" fixed top-0 left-0 z-40  transition-transform -translate-x-full md:translate-x-0">
+            <!-- Your aside content goes here -->
+        </app-aside>
+    </div>
+
+    <div class="col-span-9 md:ml-14">
+        <router-outlet></router-outlet>
+
+    </div>
+
+    <!-- The rest of your layout -->
+
+    <app-footer class="col-span-12"></app-footer>
+</div>

@@ -1,0 +1,72 @@
+<div class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mr-2">
+    <!-- <div appToChange class=" max-w-sm rounded-lg overflow-hidden shadow-lg " *ngFor="let theProduct? of FirsttheProduct?" > -->
+
+    <div appToChange class=" max-w-sm rounded-lg overflow-hidden shadow-lg ">
+        <img class="w-full" [src]="theProduct?.Img" alt="Sunset in the mountains">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{theProduct?.Name}}</div>
+            <h4 class="text-teal-700 text-base">Starting at {{theProduct?.Price}} </h4>
+            <h4 class="text-teal-700 text-base">Quantity: {{ theProduct?.Quantity }} Item</h4>
+
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <button routerLinkActive="router-link-active" appToChange
+                class="m-5 bg-gray-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
+                (click)="toGoBack()">
+                To Back
+            </button>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <button routerLinkActive="router-link-active" appToChange
+                class="m-5 bg-gray-700 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-full"
+                (click)="toGoPrevious()">
+                To Previous
+            </button>
+            <button routerLinkActive="router-link-active" appToChange
+                class="m-5 bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full"
+                (click)="toGoNext()">
+                To Next
+            </button>
+        </div>
+        <!-- details button -->
+        <div class="px-6 pt-4 pb-2">
+
+
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Tech</span>
+            @if(theProduct?.CategoryID==1){
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Mobiles</span>
+
+            }@else if (theProduct?.CategoryID==2) {
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Laptop</span>
+
+
+            }@else if (theProduct?.CategoryID==3) {
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Tablet</span>
+            }@else if (theProduct?.CategoryID==4){
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Photography</span>
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Traveling</span>
+
+
+            }@else if (theProduct?.CategoryID==5){
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Console</span>
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Gaming</span>
+            }
+
+
+        </div>
+
+    </div>
+
+
+
+</div>

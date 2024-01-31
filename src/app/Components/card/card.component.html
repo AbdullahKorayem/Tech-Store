@@ -1,0 +1,68 @@
+<div class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mr-2">
+    <!-- <div appToChange class=" max-w-sm rounded-lg overflow-hidden shadow-lg " *ngFor="let product of FirstProduct" > -->
+    @for( product of filterProduct;track product.ID){
+    <div appToChange class=" max-w-sm rounded-lg overflow-hidden shadow-lg ">
+        <img class="w-full" [src]="product.Img" alt="Sunset in the mountains">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{product.Name}}</div>
+            <h4 class="text-teal-700 text-base">Starting at {{product.Price |currency}} </h4>
+            <h4 class="text-teal-700 text-base">Quantity: {{ product.Quantity }} Item</h4>
+
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <!-- buy button -->
+            <button appToChange class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full"
+                (click)="toBuy(product)">
+                Order
+            </button>
+            <!-- <button (click)="toDetails(product.ID)" appToChange class="m-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                To Details
+            </button> -->
+            <button [routerLink]="['/Details',product.ID]" routerLinkActive="router-link-active" appToChange
+                class="m-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                To Details
+            </button>
+
+        </div>
+        <!-- details button -->
+        <div class="px-6 pt-4 pb-2">
+
+
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Tech</span>
+            @if(product.CategoryID==1){
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Mobiles</span>
+
+            }@else if (product.CategoryID==2) {
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Laptop</span>
+
+
+            }@else if (product.CategoryID==3) {
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Tablet</span>
+            }@else if (product.CategoryID==4){
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Photography</span>
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Traveling</span>
+
+
+            }@else if (product.CategoryID==5){
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Console</span>
+            <span
+                class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Gaming</span>
+            }
+
+
+        </div>
+
+    </div>
+    } @empty {
+    <h1>There Is No Products</h1>
+    }
+</div>
